@@ -28,43 +28,24 @@ const StyledDiv = styled.div`
   }
 `;
 
-function UserOnboardingForm(props) {
+function LoginForm(props) {
   console.log(props);
   return (
     <StyledDiv className="New-user-form">
-      <h1>Enter New User:</h1>
+      <h2>Log In</h2>
       <Form className="form">
         <label>
-          First Name:
-          <Field
-            type="text"
-            name="first_name"
-            placeholder="Enter your first name here"
-          />
-        </label>{" "}
-        <br />
-        <label>
-          Last Name:
-          <Field
-            type="text"
-            name="last_name"
-            placeholder="Enter your last name here"
-          />
+          User Name:
+          <Field type="text" name="user_name" placeholder="User name" />
         </label>
         <br />
         <label>
           Password :
-          <Field
-            type="password"
-            name="password"
-            placeholder="Enter your password here"
-          />
+          <Field type="password" name="password" placeholder="password " />
         </label>
         <br />
-        <label>
-          I confirm I have read and agree to the Terms of Service
-          <Field type="checkbox" name="terms" />
-        </label>
+        <br />
+
         {/* <Field className="submit-button" type="submit" /> */}
         <button>Submit</button>
       </Form>
@@ -77,19 +58,16 @@ function UserOnboardingForm(props) {
   );
 }
 
-const UserOnboardingFormWithFormik = withFormik({
+const LoginFormWithFormik = withFormik({
   mapPropsToValues() {
     return {
-      first_name: "",
-      last_name: "",
       password: "",
-      terms: false
+      user_name: ""
     };
   },
   validationSchema: Yup.object().shape({
-    first_name: Yup.string().required("Please enter first name"),
-    last_name: Yup.string().required("Please enter last name"),
-    password: Yup.string().required("password is a required field")
+    password: Yup.string().required("password is a required field"),
+    user_name: Yup.string().required("password is a required field")
   }),
 
   handleSubmit(input, tools) {
@@ -107,6 +85,6 @@ const UserOnboardingFormWithFormik = withFormik({
         console.log(err);
       });
   }
-})(UserOnboardingForm);
+})(LoginForm);
 
-export default UserOnboardingFormWithFormik;
+export default LoginFormWithFormik;
