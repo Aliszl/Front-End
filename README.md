@@ -1,74 +1,61 @@
 # Front-End
+
 Front End repository
+Cambridge Canine City
 
 - What problem does your app solve?
 
-Generates a local database of parks that users can interact with
-Makes access to local parks easier for tourists
+Cambridge is a small green city with many local parks, but people tend to stick to the same park on their doorstep for want of local knowledge. The Cambridge dog walking community has had enough tedium, we want a resource that lets us know about all those hidden local gems of open spaces, to broaden our canine companions experiences. Where are they, are our pooches welcome? Can we let them run free or are they restricted to certain areas?
 
 - Be as specific as possible; how does your app solve the problem?
-Displays a directory of park listings where users can search and find a park based on preference.
+  Displays a directory of park listings where users can search and find a park based on preference.
 
-
-- What is the mission statement?
-To put local parks in the spotlight for tourists.
+* What is the mission statement?
+  To put local parks in the spotlight for tourists.
 
 Features
 
-
 - What features are required for your minimum viable product?
-Create user account (Login / Signup)
-Add Parks with criteria
-Delete a Park
-Display a list of parks
-Rating System (Visited Parks)
-Comments
-Search Feature (Don’t need to be logged in to search)
+  Create user account (Login / Signup)
+  Add Parks with criteria
+  Delete a Park
+  Display a list of parks
+  Rating System (Visited Parks)
+  Comments
+  Search Feature (Don’t need to be logged in to search)
 
 - What features may you wish to put in a future release?
-Add Pictures to Park Creation
-Share your rating with comments on social media
-A page that displays a list of parks a specific user added
+  Add Pictures to Park Creation
+  Share your rating with comments on social media
+  A page that displays a list of parks a specific user added
 
 - What do the top 3 similar apps do for their users?
-Google Maps
+  Google Maps
 
 Design - Planning
 
 ---
 
-*Optional but highly recommended*
-*Please refer to this document:*
+_Optional but highly recommended_
+_Please refer to this document:_
 
 [Build Weeks: Planning & Design Worksheet (How to build a beautiful application)](https://www.notion.so/aabd4ef25a184a2085e511ce93480c0f)
 
 - What design system will you use?
 
-
-
-- What will your user flow be? 
-
+* What will your user flow be?
 
 - What is the URL to your wireframes?
 
 Frameworks - Libraries
 
-
 - What 3rd party frameworks/libraries are you considering using?
 
-
-
-- Do APIs require you to contact its maintainer to gain access?
-
-
+* Do APIs require you to contact its maintainer to gain access?
 
 - Are you required to pay to use the API?
 
-
-
-- Have you considered using Apple Frameworks? (MapKit, Healthkit, ARKit?)
-
-
+* Have you considered using Apple Frameworks? (MapKit, Healthkit, ARKit?)
 
 For Data Scientists
 
@@ -88,15 +75,9 @@ Target Audience
 
 - Who is your target audience? Be specific.
 
-
-
-- What feedback have you gotten from potential users?
-
-
+* What feedback have you gotten from potential users?
 
 - Have you validated the problem and your solution with your target audience? How?
-
-
 
 Research
 
