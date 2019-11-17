@@ -86,6 +86,19 @@ function RegistrationForm(props) {
         </label>
         <br />
         <ErrorMessage
+          name="password_confirmation"
+          render={msg => <div className="error">{msg}</div>}
+        />
+        <label>
+          Re-enter Password :
+          <Field
+            type="password"
+            name="password_confirmation"
+            placeholder="re-enter password "
+          />
+        </label>
+        <br />
+        <ErrorMessage
           name="user_name"
           render={msg => <div className="error">{msg}</div>}
         />
@@ -94,6 +107,10 @@ function RegistrationForm(props) {
           <Field type="text" name="user_name" placeholder="User name" />
         </label>
         <br />
+        <ErrorMessage
+          name="terms"
+          render={msg => <div className="error">{msg}</div>}
+        />
         <label>
           I confirm I have read and agree to the Terms of Service
           <Field type="checkbox" name="terms" />
@@ -137,6 +154,11 @@ const RegistrationFormWithFormik = withFormik({
       .required("password is a required field")
       .min(5, "Too Short!")
       .max(25, "Too Long!"),
+
+    password_confirmation: Yup.string()
+      .required("re-enter password")
+      .oneOf([Yup.ref("current_password"), null], "Passwords must match"),
+
     user_name: Yup.string()
       .required("user name is a required field")
       .min(3, "Too Short!")
