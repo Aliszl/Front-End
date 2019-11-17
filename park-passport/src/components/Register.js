@@ -19,7 +19,7 @@ import React, { useState } from "react";
 import * as Yup from "yup";
 import axios from "axios";
 import styled from "styled-components";
-import { withFormik, Form, Field } from "formik";
+import { withFormik, Form, Field, ErrorMessage } from "formik";
 // import UserList from "../components/UserList";
 
 // Styling
@@ -45,21 +45,50 @@ function RegistrationForm(props) {
     <StyledDiv className="New-user-form">
       <h2>Register</h2>
       <Form className="form">
+        <ErrorMessage
+          name="first_name"
+          render={msg => <div className="error">{msg}</div>}
+        />
         <label>
           First Name:
           <Field type="text" name="first_name" placeholder="first name" />
         </label>{" "}
         <br />
+        <ErrorMessage
+          name="last_name"
+          render={msg => <div className="error">{msg}</div>}
+        />
         <label>
           Last Name:
           <Field type="text" name="last_name" placeholder="last name " />
         </label>
         <br />
+        <ErrorMessage
+          name="email"
+          render={msg => <div className="error">{msg}</div>}
+        />
         <label>
-          Password :
-          <Field type="password" name="password" placeholder="password " />
+          email:
+          <Field type="email" name="email" placeholder="email " />
         </label>
         <br />
+        <ErrorMessage
+          name="current_password"
+          render={msg => <div className="error">{msg}</div>}
+        />
+        <label>
+          Password :
+          <Field
+            type="password"
+            name="current_password"
+            placeholder="password "
+          />
+        </label>
+        <br />
+        <ErrorMessage
+          name="user_name"
+          render={msg => <div className="error">{msg}</div>}
+        />
         <label>
           User Name:
           <Field type="text" name="user_name" placeholder="User name" />
@@ -70,7 +99,7 @@ function RegistrationForm(props) {
           <Field type="checkbox" name="terms" />
         </label>
         {/* <Field className="submit-button" type="submit" /> */}
-        <button>Submit</button>
+        <button type="submit">Submit</button>
       </Form>
       {/* <div>
     {
@@ -86,16 +115,36 @@ const RegistrationFormWithFormik = withFormik({
     return {
       first_name: "",
       last_name: "",
-      password: "",
+      email: "",
+      current_password: "",
       user_name: "",
       terms: false
     };
   },
   validationSchema: Yup.object().shape({
-    first_name: Yup.string().required("Please enter first name"),
-    last_name: Yup.string().required("Please enter last name"),
-    password: Yup.string().required("password is a required field"),
-    user_name: Yup.string().required("password is a required field")
+    first_name: Yup.string()
+      .required("Please enter first name")
+      .min(2, "Too Short!")
+      .max(25, "Too Long!"),
+    last_name: Yup.string()
+      .required("Please enter last name")
+      .min(2, "Too Short!")
+      .max(25, "Too Long!"),
+    email: Yup.string()
+      .required("Please enter email")
+      .email("Invalid email"),
+    current_password: Yup.string()
+      .required("password is a required field")
+      .min(5, "Too Short!")
+      .max(25, "Too Long!"),
+    user_name: Yup.string()
+      .required("user name is a required field")
+      .min(3, "Too Short!")
+      .max(25, "Too Long!"),
+
+    terms: Yup.boolean().required(
+      "It is necessary to agree to terms of service to proceed with registration"
+    )
   }),
 
   handleSubmit(input, tools) {
