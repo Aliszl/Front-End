@@ -1,41 +1,80 @@
-// import React from "react";
-// import styled from "styled-components";
-
-// // const StyledDiv = styled.div`
-// //   /* height: 80px; */
-// //   padding-top: 15px;
-// //   padding-bottom: 15px;
-// //   border: 1px solid blue;
-// //   display: flex;
-// //   flex-direction: row;
-
-// //   justify-content: space-around;
-// // `;
-
-// const Register = () => <h1>Register</h1>;
-
-// export default Register;
 import React, { useState } from "react";
 import * as Yup from "yup";
 import axios from "axios";
 import styled from "styled-components";
 import { withFormik, Form, Field, ErrorMessage } from "formik";
-// import UserList from "../components/UserList";
 
 // Styling
 
 const StyledDiv = styled.div`
-  border: 1px solid blue;
-  height: 400px;
+  /* border: 1px solid blue; */
+  width: 61.8%;
+  /* border: 1px solid blue; */
+  margin: 0 auto;
+  /* height: 400px; */
   display: flex;
   flex-direction: column;
+  justify-content: end;
   .form {
+    /* border: 1px solid blue; */
+    margin: 0 16.1%;
+    margin-top: 5px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    border-radius: 4px;
+    box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3);
+
+    label {
+      width: 100%;
+      color: #555;
+      margin-left: 10px;
+      margin-right: 10px;
+      margin-bottom: 5px;
+      padding-top: 10px;
+      color: black;
+      display: flex;
+      flex-direction: column;
+      font-size: 12px;
+    }
+    #first-name {
+      margin-top: 9.6%;
+    }
+    .terms-checkbox {
+      width: 95%;
+      margin: 0 auto;
+    }
+    input {
+      display: flex;
+      flex-direction: column;
+      width: 38.2%;
+      margin: 0 auto;
+      /* margin-right: 40px; */
+      margin-bottom: 3px;
+      text-align: center;
+    }
+    input[type="checkbox"] {
+      width: 20px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+    /* .check {
+      margin-left: 3px;
+    } */
+    input[type="submit"] {
+      margin: 0 auto;
+      padding-top: 9.6%;
+      width: 30%;
+      height: 40px;
+    }
   }
-  .submit-button {
-    width: "30px";
+  button {
+    margin: 0 auto 20px auto;
+    width: 60px;
+  }
+  .error {
+    color: red;
+    font-size: 12px;
+    font-weight: 600;
   }
 `;
 
@@ -49,11 +88,10 @@ function RegistrationForm(props) {
           name="first_name"
           render={msg => <div className="error">{msg}</div>}
         />
-        <label>
+        <label id="first-name">
           First Name:
           <Field type="text" name="first_name" placeholder="first name" />
         </label>{" "}
-        <br />
         <ErrorMessage
           name="last_name"
           render={msg => <div className="error">{msg}</div>}
@@ -62,7 +100,6 @@ function RegistrationForm(props) {
           Last Name:
           <Field type="text" name="last_name" placeholder="last name " />
         </label>
-        <br />
         <ErrorMessage
           name="email"
           render={msg => <div className="error">{msg}</div>}
@@ -71,7 +108,14 @@ function RegistrationForm(props) {
           email:
           <Field type="email" name="email" placeholder="email " />
         </label>
-        <br />
+        <ErrorMessage
+          name="user_name"
+          render={msg => <div className="error">{msg}</div>}
+        />
+        <label>
+          Username:
+          <Field type="text" name="user_name" placeholder="Username" />
+        </label>
         <ErrorMessage
           name="current_password"
           render={msg => <div className="error">{msg}</div>}
@@ -81,10 +125,9 @@ function RegistrationForm(props) {
           <Field
             type="password"
             name="current_password"
-            placeholder="password "
+            placeholder="Password "
           />
         </label>
-        <br />
         <ErrorMessage
           name="password_confirmation"
           render={msg => <div className="error">{msg}</div>}
@@ -94,24 +137,14 @@ function RegistrationForm(props) {
           <Field
             type="password"
             name="password_confirmation"
-            placeholder="re-enter password "
+            placeholder="Re-enter password "
           />
         </label>
-        <br />
-        <ErrorMessage
-          name="user_name"
-          render={msg => <div className="error">{msg}</div>}
-        />
-        <label>
-          User Name:
-          <Field type="text" name="user_name" placeholder="User name" />
-        </label>
-        <br />
         <ErrorMessage
           name="terms"
           render={msg => <div className="error">{msg}</div>}
         />
-        <label>
+        <label className="terms-checkbox">
           I confirm I have read and agree to the Terms of Service
           <Field type="checkbox" name="terms" />
         </label>
